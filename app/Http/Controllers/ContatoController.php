@@ -63,9 +63,9 @@ class ContatoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contato $contato)
+    public function edit(Contato $contato): View
     {
-        //
+        return view('contato.edit', ['contato' => $contato]);
     }
 
     /**
@@ -73,7 +73,20 @@ class ContatoController extends Controller
      */
     public function update(Request $request, Contato $contato)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'max:255'],
+            'telefone' => ['required', 'max:20'],
+        ]);
+
+        $details = [
+            'nome' => $request->input('nome'),
+            'telefone' => $request->input('telefone'),
+        ];
+
+        $contato->update($details);
+        // $result = $this->repository->update($contato, $details);
+
+        return to_route('contato.index');
     }
 
     /**

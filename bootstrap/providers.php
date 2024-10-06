@@ -2,6 +2,6 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    App\Providers\ControllerServiceProvider::class,
+    App\Providers\RepositoryServiceProvider::class,
     App\Providers\VoltServiceProvider::class,
 ];

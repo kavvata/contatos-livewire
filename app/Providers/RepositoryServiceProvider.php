@@ -7,7 +7,7 @@ use App\Repositories\ContatoRepository;
 use App\Repositories\Repository;
 use Illuminate\Support\ServiceProvider;
 
-class ControllerServiceProvider extends ServiceProvider
+class RepositoryServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
