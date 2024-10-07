@@ -3,30 +3,28 @@
 
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Editar Contato') }}
+            {{ __('Novo Contato') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 ">
-            <form method="POST" action="{{ route('contato.update', $contato) }}"
+            <form method="POST" action="{{ route('contato.store') }}"
                 class="flex-col gap-6 overflow-hidden bg-white p-6 text-gray-800 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
 
                 @csrf
-                @method('PUT')
+                @method('POST')
 
                 <div class="flex items-center">
                     <div
                         class="form-input border-0  bg-white text-gray-800 sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
                         <label for="nome">Nome:</label>
-                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="nome"
-                            value="{{ $contato->nome }}">
+                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="nome">
                     </div>
                     <div
                         class="form-input border-0  bg-white text-gray-800 sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
                         <label for="telefone">Telefone:</label>
-                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="telefone"
-                            value="{{ $contato->telefone }}">
+                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="telefone">
                     </div>
                 </div>
                 <div class="justify-center">

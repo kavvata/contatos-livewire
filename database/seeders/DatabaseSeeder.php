@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contato;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,11 +16,20 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory()
+            ->has(Contato::factory()->count(15))
+            ->create([
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+            ]);
 
-        $this->call([ContatoSeeder::class]);
+        User::factory()
+            ->has(Contato::factory()->count(15))
+            ->create([
+                'name' => 'Admin User',
+                'email' => 'admin@example.com',
+            ]);
+
+        // $this->call([ContatoSeeder::class]);
     }
 }

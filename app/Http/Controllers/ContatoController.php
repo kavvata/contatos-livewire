@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contato;
 use App\Repositories\Repository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ContatoController extends Controller
@@ -21,7 +22,9 @@ class ContatoController extends Controller
      */
     public function index(): View
     {
-        return view('contato.index', ['contatos' => $this->repository->all()]);
+        $contatos = Auth::user()->contatos()->orderBy('nome')->get();
+
+        return view('contato.index', ['contatos' => $contatos]);
     }
 
     /**
@@ -29,7 +32,7 @@ class ContatoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contato.create');
     }
 
     /**
@@ -37,19 +40,20 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
-        // Contato::create([
-        //     'nome' => $request->input('nome'),
-        //     'telefone' => $request->input('telefone'),
-        // ]);
+        $request->validate([
+            'nome' => ['required', 'max:255'],
+            'telefone' => ['required', 'max:20'],
+        ]);
 
-        // return route('contato');
+        $novoContato = new Contato;
 
-        return $this->show(
-            Contato::create([
-                'nome' => $request->input('nome'),
-                'telefone' => $request->input('telefone'),
-            ])
-        );
+        $novoContato->nome = $request->input('nome');
+        $novoContato->telefone = $request->input('telefone');
+        $novoContato->user()->associate(Auth::user());
+
+        $novoContato->save();
+
+        return to_route('contato.index');
     }
 
     /**
@@ -77,6 +81,10 @@ class ContatoController extends Controller
             'nome' => ['required', 'max:255'],
             'telefone' => ['required', 'max:20'],
         ]);
+
+        if ($request->input('nome') == 'Gabriel') {
+            return back()->withErrors('Gabriel nn pode po');
+        }
 
         $details = [
             'nome' => $request->input('nome'),

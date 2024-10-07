@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -27,6 +28,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Contato whereNome($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contato whereTelefone($value)
  *
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \App\Models\User|null $user
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Contato onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contato whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contato withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contato withoutTrashed()
+ *
  * @mixin \Eloquent
  */
 class Contato extends Model
@@ -35,4 +44,9 @@ class Contato extends Model
     use SoftDeletes;
 
     protected $fillable = ['nome', 'telefone'];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
