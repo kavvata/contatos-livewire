@@ -19,12 +19,12 @@
                     <div
                         class="form-input border-0  bg-white text-gray-800 sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
                         <label for="nome">Nome:</label>
-                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="nome">
+                        <input class="h-8 sm:rounded-lg dark:bg-gray-900" type="text" name="nome">
                     </div>
                     <div
                         class="form-input border-0  bg-white text-gray-800 sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
                         <label for="telefone">Telefone:</label>
-                        <input class="sm:rounded-lg dark:bg-gray-900" type="text" name="telefone">
+                        <input class="h-8 sm:rounded-lg dark:bg-gray-900" type="text" name="telefone">
                     </div>
                 </div>
                 <div class="justify-center">

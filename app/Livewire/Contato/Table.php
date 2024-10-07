@@ -8,20 +8,34 @@ use Livewire\Component;
 
 class Table extends Component
 {
-    public Collection $listaContato;
+    public string $filtro;
+
+    public Collection $cache;
+
+    public Collection $contatos;
 
     public function mount(Collection $listaContato): void
     {
-        $this->listaContato = $listaContato;
+        $this->filtro = '';
+        $this->cache = $listaContato;
+        $this->contatos = $listaContato->sortBy('nome');
     }
 
     public function sort(string $campo): void
     {
-        $this->listaContato = $this->listaContato->sortBy($campo);
+        $this->contatos = $this->cache->sortBy($campo);
     }
 
     public function render(): View
     {
+        if ($this->filtro == '') {
+            $this->contatos = $this->cache->sortBy('nome');
+        } else {
+            $this->contatos = $this->cache->filter(function ($c) {
+                return str_contains(strtoupper($c->nome), strtoupper($this->filtro));
+            })->sortBy('nome');
+        }
+
         return view('livewire.contato.table');
     }
 }
