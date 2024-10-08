@@ -6,12 +6,22 @@ Testando conceitos diponibilizados pelo laravel.
 - Docker Versão: 27.3.1
 
 ## Como Testar
+1. Primeira configuração
 ``` bash
 cp .env.example .env
 composer install
 php artisan sail:install
 ./vendor/bin/sail artisan key:generate
 ./vendor/bin/sail up
+./vendor/bin/sail npm install
 ./vendor/bin/sail npm run dev
 ./vendor/bin/sail artisan migrate:fresh --seed
 ```
+2. Levantando o serviço
+```bash
+./vendor/bin/sail up
+./vendor/bin/sail npm run dev
+```
+3. Credenciais para teste:
+usuário: test@example.com
+senha: password
