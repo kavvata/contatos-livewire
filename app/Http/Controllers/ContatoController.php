@@ -45,13 +45,10 @@ class ContatoController extends Controller
             'telefone' => ['required', 'max:20'],
         ]);
 
-        $novoContato = new Contato;
-
-        $novoContato->nome = $request->input('nome');
-        $novoContato->telefone = $request->input('telefone');
-        $novoContato->user()->associate(Auth::user());
-
-        $novoContato->save();
+        Auth::user()->contatos()->create([
+            'nome' => $request->input('nome'),
+            'telefone' => $request->input('telefone'),
+        ]);
 
         return to_route('contato.index');
     }
