@@ -23,5 +23,5 @@ php artisan sail:install
 ./vendor/bin/sail npm run dev
 ```
 3. Credenciais para teste:
-usuário: test@example.com
-senha: password
+- usuário: test@example.com
+- senha: password
