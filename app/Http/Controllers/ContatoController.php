@@ -79,6 +79,7 @@ class ContatoController extends Controller
             'telefone' => ['required', 'max:20'],
         ]);
 
+        /* Exemplo de erro */
         if ($request->input('nome') == 'Gabriel') {
             return back()->withErrors('Gabriel nn pode po');
         }
@@ -99,6 +100,8 @@ class ContatoController extends Controller
      */
     public function destroy(Contato $contato)
     {
-        //
+        $contato->delete();
+
+        return back();
     }
 }
