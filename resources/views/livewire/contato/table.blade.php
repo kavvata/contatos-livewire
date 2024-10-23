@@ -6,7 +6,7 @@
             <input class="h-8 border border-slate-600 sm:rounded-lg dark:bg-slate-900" placeholder="Procure um nome..."
                 type="text" wire:model.live.debounce.300ms="filtro">
         </div>
-        <a class="align-center bg-green-600 px-2 hover:bg-green-700 sm:rounded-md " href="{{ route('contato.create') }}">
+        <a class="align-center bg-green-600 px-2 hover:bg-green-900 sm:rounded-md " href="{{ route('contato.create') }}">
             Novo Contato
         </a>
     </div>
@@ -22,11 +22,11 @@
         </tr>
         @foreach ($contatos as $contato)
             <tr class ="border border-slate-600 dark:hover:bg-gray-900">
-                <td class="border border-slate-600 text-center"> {{ $contato->nome }} </td>
-                <td class="border border-slate-600 text-center"> {{ $contato->telefone }} </td>
-                <td class="flex flex-row border border-slate-600 justify-center">
+                <td class="border border-slate-600 py-2 text-center"> {{ $contato->nome }} </td>
+                <td class="border border-slate-600 py-2 text-center"> {{ $contato->telefone }} </td>
+                <td class="flex flex-row justify-center py-2 gap-2">
 
-                    <a class="bg-slate-600 px-2 hover:bg-blue-400 sm:rounded-md "
+                    <a class="bg-slate-600 px-2 hover:bg-blue-400 sm:rounded-md"
                         href="{{ route('contato.edit', $contato) }}">Editar</a>
 
                     <form method="POST" action="{{ route('contato.destroy', $contato) }}">

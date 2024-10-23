@@ -50,7 +50,7 @@ class ContatoController extends Controller
             'telefone' => $request->input('telefone'),
         ]);
 
-        return to_route('contato.index');
+        return to_route('contato.index')->with('sucesso', 'Contato cadastrado com sucesso!');
     }
 
     /**
@@ -102,6 +102,6 @@ class ContatoController extends Controller
     {
         $contato->delete();
 
-        return back();
+        return back()->with('sucesso', 'Contato removido com sucesso.');
     }
 }
