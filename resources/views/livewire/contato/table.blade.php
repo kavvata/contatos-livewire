@@ -1,12 +1,12 @@
 <div
     class="flex flex-col gap-6 overflow-hidden bg-white p-6 text-gray-800 shadow-sm sm:rounded-lg dark:bg-gray-800 dark:text-gray-200">
     {{-- The whole world belongs to you. --}}
-    <div class="align-center flex justify-between">
+    <div class="h-10 align-center flex justify-between">
         <div>
-            <input class="h-8 border border-slate-600 sm:rounded-lg dark:bg-slate-900" placeholder="Procure um nome..."
+            <input class="border h-full border-slate-600 sm:rounded-lg dark:bg-slate-900" placeholder="Procure um nome..."
                 type="text" wire:model.live.debounce.300ms="filtro">
         </div>
-        <a class="align-center bg-green-600 px-2 hover:bg-green-900 sm:rounded-md " href="{{ route('contato.create') }}">
+        <a class=" bg-green-600 px-2 py-2 hover:bg-green-900 sm:rounded-md " href="{{ route('contato.create') }}">
             Novo Contato
         </a>
     </div>
